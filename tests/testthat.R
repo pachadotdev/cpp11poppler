@@ -1,4 +1,4 @@
 library(testthat)
-library(pdftools)
+library(cpp11poppler)
 
-test_check("pdftools")
+test_check("cpp11poppler")

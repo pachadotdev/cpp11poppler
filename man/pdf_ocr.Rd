@@ -36,18 +36,18 @@ pdf_ocr_data(
 
 \item{dpi}{resolution to render image that is passed to \link{pdf_convert}.}
 
-\item{language}{passed to \link[tesseract:tesseract]{tesseract} to specify the
+\item{language}{passed to \link[cpp11tesseract:tesseract]{cpp11tesseract} to specify the
 languge of the engine.}
 
-\item{options}{passed to \link[tesseract:tesseract]{tesseract} to specify OCR parameters}
+\item{options}{passed to \link[cpp11tesseract:tesseract]{cpp11tesseract} to specify OCR parameters}
 }
 \description{
 Perform OCR text extraction. This requires you have the \code{tesseract} package.
 }
 \seealso{
-Other pdftools: 
-\code{\link{pdftools}},
+Other cpp11poppler: 
+\code{\link{cpp11poppler}},
 \code{\link{qpdf}},
 \code{\link{rendering}}
 }
-\concept{pdftools}
+\concept{cpp11poppler}

@@ -21,7 +21,7 @@ if [ $? -eq 0 ]; then
 fi
 
 # Many users don't have or know xQuartz. We should not depend on it for no reason.
-# See https://github.com/ropensci/pdftools/issues/111
+# See https://github.com/pachadotdev/cpp11poppler/issues/111
 if [ `uname` = "Darwin" ]; then
 case "$PKGCONFIG_LIBS" in
   *"-lX11"*)
@@ -79,6 +79,27 @@ if [ $? -ne 0 ]; then
   cat configure.log
   echo "--------------------------------------------------------------------"
   exit 1
+fi
+
+# Create a temporary C++ file to test the compatibility with Poppler
+cat <<EOF > conftest.cpp
+#include <poppler-version.h>
+
+int main() {
+    poppler::version_string();
+    return 0;
+}
+EOF
+
+# Compile the temporary C++ file to an object file
+if ! ${CXX} -std=gnu++11 -c conftest.cpp -o conftest.o ${PKG_CFLAGS}
+then
+    echo "Poppler is not compatible with the C++ compiler used by R."
+    rm -rf conftest.cpp conftest.o
+    exit 1
+else
+    echo "Poppler is compatible with the C++ compiler used by R."
+    rm -rf conftest.cpp conftest.o
 fi
 
 # On CRAN macbuilder copy poppler-data manually (autobrew does this automatically)

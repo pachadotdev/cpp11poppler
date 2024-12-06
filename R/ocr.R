@@ -4,11 +4,11 @@
 #'
 #' @export
 #' @rdname pdf_ocr
-#' @family pdftools
-#' @inheritParams pdftools
-#' @param language passed to [tesseract][tesseract::tesseract] to specify the
+#' @family cpp11poppler
+#' @inheritParams cpp11poppler
+#' @param language passed to [cpp11tesseract][cpp11tesseract::tesseract] to specify the
 #' languge of the engine.
-#' @param options passed to [tesseract][tesseract::tesseract] to specify OCR parameters
+#' @param options passed to [cpp11tesseract][cpp11tesseract::tesseract] to specify OCR parameters
 #' @param pages which pages of the pdf file to extract
 #' @param dpi resolution to render image that is passed to [pdf_convert].
 pdf_ocr_text <- function(pdf, pages = NULL, opw = "", upw = "", dpi = 600, language = "eng", options = NULL){

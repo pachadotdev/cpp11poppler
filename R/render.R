@@ -14,7 +14,7 @@
 #' or `FALSE` (neither).
 #' @param opw owner password
 #' @param upw user password
-#' @family pdftools
+#' @family cpp11poppler
 #' @aliases render
 #' @examples # Rendering should be supported on all platforms now
 #' # convert few pages to png
@@ -39,7 +39,7 @@
 #' # Cleanup
 #' unlink(c('news.pdf', 'news_1.png', 'news_2.png', 'news_3.png',
 #'  'page.jpeg', 'page.png', 'page.webp'))
-pdf_render_page<- function(pdf, page = 1, dpi = 72, numeric = FALSE, antialias = TRUE, opw = "", upw = "") {
+pdf_render_page<- function(pdf, page = 1, dpi = 300, numeric = FALSE, antialias = TRUE, opw = "", upw = "") {
   antialiasing <- isTRUE(antialias) || isTRUE(antialias == "draw")
   text_antialiasing <- isTRUE(antialias) || isTRUE(antialias == "text")
   out <- poppler_render_page(loadfile(pdf), page, dpi, opw, upw, antialiasing, text_antialiasing)
@@ -63,7 +63,7 @@ pdf_render_page<- function(pdf, page = 1, dpi = 72, numeric = FALSE, antialias =
 #' @param filenames vector of equal length to `pages` with output filenames. May also be
 #' a format string which is expanded using `pages` and `format` respectively.
 #' @param verbose print some progress info to stdout
-pdf_convert <- function(pdf, format = "png", pages = NULL, filenames = NULL , dpi = 72,
+pdf_convert <- function(pdf, format = "png", pages = NULL, filenames = NULL , dpi = 300,
                         antialias = TRUE, opw = "", upw = "", verbose = TRUE){
   config <- poppler_config()
   if(!config$can_render || !length(config$supported_image_formats))

@@ -13,7 +13,7 @@
 #' When using \code{\link{pdf_data}} in R packages, condition use on
 #' `poppler_config()$has_pdf_data` which shows if this function can be
 #' used on the current system. For Ubuntu 16.04 (Xenial) and 18.04 (Bionic)
-#' you can use \href{https://github.com/ropensci/pdftools#installation}{the PPA}
+#' you can use \href{https://github.com/pachadotdev/cpp11pdftools#installation}{the PPA}
 #' with backports of Poppler 0.74.0.
 #'
 #' Poppler is pretty verbose when encountering minor errors in PDF files,
@@ -24,12 +24,10 @@
 #' @param pdf file path or raw vector with pdf data
 #' @param opw string with owner password to open pdf
 #' @param upw string with user password to open pdf
-#' @useDynLib pdftools
-#' @name pdftools
-#' @rdname pdftools
-#' @aliases pdftools
-#' @importFrom Rcpp sourceCpp
-#' @family pdftools
+#' @name cpp11poppler
+#' @rdname cpp11poppler
+#' @aliases cpp11poppler
+#' @family cpp11poppler
 #' @examples # Just a random pdf file
 #' pdf_file <- file.path(R.home("doc"), "NEWS.pdf")
 #' info <- pdf_info(pdf_file)
@@ -40,13 +38,13 @@ pdf_info <- function(pdf, opw = "", upw = "") {
   poppler_pdf_info(loadfile(pdf), opw, upw)
 }
 
-#' @rdname pdftools
+#' @rdname cpp11poppler
 #' @export
 pdf_text <- function(pdf, opw = "", upw = "") {
   poppler_pdf_text(loadfile(pdf), opw, upw)
 }
 
-#' @rdname pdftools
+#' @rdname cpp11poppler
 #' @export
 #' @param font_info if TRUE, extract font-data for each box. Be careful, this
 #' requires a very recent version of poppler and will error otherwise.
@@ -56,26 +54,26 @@ pdf_data <- function(pdf, font_info = FALSE, opw = "", upw = "") {
   lapply(out, df_as_tibble)
 }
 
-#' @rdname pdftools
+#' @rdname cpp11poppler
 #' @export
 pdf_fonts<- function(pdf, opw = "", upw = "") {
   out <- poppler_pdf_fonts(loadfile(pdf), opw, upw)
   df_as_tibble(out)
 }
 
-#' @rdname pdftools
+#' @rdname cpp11poppler
 #' @export
 pdf_attachments<- function(pdf, opw = "", upw = "") {
   poppler_pdf_files(loadfile(pdf), opw, upw)
 }
 
-#' @rdname pdftools
+#' @rdname cpp11poppler
 #' @export
 pdf_toc<- function(pdf, opw = "", upw = "") {
-  poppler_pdf_toc(loadfile(pdf), opw, upw)
+  poppler_pdf_toc(loadfile(pdf), opw = opw, upw = upw)
 }
 
-#' @rdname pdftools
+#' @rdname cpp11poppler
 #' @export
 pdf_pagesize <- function(pdf, opw = "", upw = "") {
   poppler_pdf_pagesize(loadfile(pdf), opw, upw)

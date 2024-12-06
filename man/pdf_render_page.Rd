@@ -11,7 +11,7 @@
 pdf_render_page(
   pdf,
   page = 1,
-  dpi = 72,
+  dpi = 300,
   numeric = FALSE,
   antialias = TRUE,
   opw = "",
@@ -23,7 +23,7 @@ pdf_convert(
   format = "png",
   pages = NULL,
   filenames = NULL,
-  dpi = 72,
+  dpi = 300,
   antialias = TRUE,
   opw = "",
   upw = "",
@@ -88,9 +88,9 @@ unlink(c('news.pdf', 'news_1.png', 'news_2.png', 'news_3.png',
  'page.jpeg', 'page.png', 'page.webp'))
 }
 \seealso{
-Other pdftools: 
+Other cpp11poppler: 
+\code{\link{cpp11poppler}},
 \code{\link{pdf_ocr_text}()},
-\code{\link{pdftools}},
 \code{\link{qpdf}}
 }
-\concept{pdftools}
+\concept{cpp11poppler}

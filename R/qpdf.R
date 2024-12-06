@@ -2,7 +2,7 @@
 #' @rdname qpdf
 #' @name qpdf
 #' @title qpdf utilities
-#' @family pdftools
+#' @family cpp11poppler
 #' @export
 qpdf::pdf_combine
 

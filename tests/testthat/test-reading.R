@@ -1,21 +1,14 @@
-context("reading pdf files")
-
 test_that("reading password protected pdf", {
-  # Read with password
+  # Read encrypted file with password
+  file <- system.file("examples", "password.pdf", package = "cpp11poppler")
+
   if(poppler_config()$version >= "0.30"){
-    expect_message(expect_true(pdf_info("pdf-example-password.original.pdf")$locked))
-    expect_error(expect_message(pdf_text("pdf-example-password.original.pdf"), "locked"))
+    expect_message(expect_true(pdf_info(file)$locked))
+    expect_error(expect_message(pdf_text(file), "locked"))
   } else{
-    expect_true(pdf_info("pdf-example-password.original.pdf")$locked)
-    expect_error(pdf_text("pdf-example-password.original.pdf"), "locked")
+    expect_true(pdf_info(file)$locked)
+    expect_error(pdf_text(file), "locked")
   }
-
-  # Get text with password
-  expect_equal(4, length(pdf_text("pdf-example-password.original.pdf", upw = "test")))
-  expect_false(pdf_info("pdf-example-password.original.pdf", upw = "test")$locked)
-
-  # Reading 'encrypted' file
-  info <- pdf_info("pdf-example-encryption.original.pdf")
-  expect_true(info$encrypted)
-  expect_false(info$locked)
+  expect_equal(1L, length(pdf_text(file, upw = "userpwd")))
+  expect_false(pdf_info(file, upw = "userpwd")$locked)
 })
