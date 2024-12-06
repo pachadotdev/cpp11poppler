@@ -22,3 +22,4 @@ winlibs:
 	cp -Rf $(RWINLIB)/$(POPPLERDATA) ../inst/share/poppler
 
 .PHONY: all winlibs clean
+

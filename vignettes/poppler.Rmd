@@ -13,16 +13,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, echo = FALSE, message = FALSE}
-library(tibble)
-# knitr::opts_chunk$set(comment = "")
-has_chi_sim <- "chi_sim" %in% cpp11tesseract::tesseract_info()$available
-if (identical(Sys.info()[["user"]], "pacha")) stopifnot(has_chi_sim)
-if (grepl("tesseract.Rcheck", getwd())) {
-  Sys.sleep(10) # workaround for CPU time check
-}
-```
-
 ## Read from PDF files
 
 If your images are stored in PDF files they first need to be converted to a
