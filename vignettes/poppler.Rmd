@@ -21,6 +21,7 @@ then extract the text from the images with the `cpp11tesseract` package. Use a
 high DPI to keep quality of the image.
 
 ```{r, eval=require(cpp11tesseract)}
+library(cpp11poppler)
 library(cpp11tesseract)
 file <- system.file("examples", "ocrscan.pdf", package = "cpp11tesseract")
 pngfile <- pdf_convert(file, dpi = 600)
