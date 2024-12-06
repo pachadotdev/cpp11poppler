@@ -69,10 +69,10 @@ extern "C" SEXP _cpp11poppler_poppler_pdf_toc(SEXP x, SEXP opw, SEXP upw) {
   END_CPP11
 }
 // bindings.cpp
-writable::raws poppler_render_page(raws x, int pagenum, double dpi, std::string opw, std::string upw, bool antialiasing, bool text_antialiasing);
+cpp11::raws poppler_render_page(cpp11::raws x, int pagenum, double dpi, std::string opw, std::string upw, bool antialiasing, bool text_antialiasing);
 extern "C" SEXP _cpp11poppler_poppler_render_page(SEXP x, SEXP pagenum, SEXP dpi, SEXP opw, SEXP upw, SEXP antialiasing, SEXP text_antialiasing) {
   BEGIN_CPP11
-    return cpp11::as_sexp(poppler_render_page(cpp11::as_cpp<cpp11::decay_t<raws>>(x), cpp11::as_cpp<cpp11::decay_t<int>>(pagenum), cpp11::as_cpp<cpp11::decay_t<double>>(dpi), cpp11::as_cpp<cpp11::decay_t<std::string>>(opw), cpp11::as_cpp<cpp11::decay_t<std::string>>(upw), cpp11::as_cpp<cpp11::decay_t<bool>>(antialiasing), cpp11::as_cpp<cpp11::decay_t<bool>>(text_antialiasing)));
+    return cpp11::as_sexp(poppler_render_page(cpp11::as_cpp<cpp11::decay_t<cpp11::raws>>(x), cpp11::as_cpp<cpp11::decay_t<int>>(pagenum), cpp11::as_cpp<cpp11::decay_t<double>>(dpi), cpp11::as_cpp<cpp11::decay_t<std::string>>(opw), cpp11::as_cpp<cpp11::decay_t<std::string>>(upw), cpp11::as_cpp<cpp11::decay_t<bool>>(antialiasing), cpp11::as_cpp<cpp11::decay_t<bool>>(text_antialiasing)));
   END_CPP11
 }
 // bindings.cpp

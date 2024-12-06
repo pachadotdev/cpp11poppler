@@ -32,7 +32,7 @@
 pdf_render_page<- function(pdf, page = 1, dpi = 300, numeric = FALSE, antialias = TRUE, opw = "", upw = "") {
   antialiasing <- isTRUE(antialias) || isTRUE(antialias == "draw")
   text_antialiasing <- isTRUE(antialias) || isTRUE(antialias == "text")
-  out <- poppler_render_page(loadfile(pdf), page, dpi, opw, upw, antialiasing, text_antialiasing)
+  out <- poppler_render_page(loadfile(pdf), page = page, dpi = dpi, opw = opw, upw = upw, antialiasing = antialiasing, text_antialiasing = text_antialiasing)
   if(identical(dim(out)[1], 4L)){
     out <- out[c(3,2,1,4),,, drop = FALSE] ## convert ARGB to RGBA
   }

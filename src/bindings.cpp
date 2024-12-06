@@ -444,14 +444,19 @@ static poppler::document* read_raw_pdf(cpp11::raws x, std::string opw,
   }
 }
 
-[[cpp11::register]] writable::raws poppler_render_page(
-    raws x, int pagenum, double dpi, std::string opw, std::string upw,
+[[cpp11::register]] cpp11::raws poppler_render_page(
+    cpp11::raws x, int pagenum, double dpi, std::string opw, std::string upw,
     bool antialiasing = true, bool text_antialiasing = true) {
   if (!page_renderer::can_render())
     throw std::runtime_error("Rendering not supported on this platform!");
 
-  std::unique_ptr<document> doc(read_raw_pdf(x, opw, upw));
-  std::unique_ptr<page> p(doc->create_page(pagenum - 1));
+  cpp11::message("Raw vector size: %d", Rf_length(x));
+  cpp11::message("Raw vector type: %s", typeid(x).name());
+
+  std::unique_ptr<poppler::document> doc(read_raw_pdf(x, opw, upw));
+  if (!doc) throw std::runtime_error("Failed to load PDF document.");
+
+  std::unique_ptr<poppler::page> p(doc->create_page(pagenum - 1));
   if (!p) throw std::runtime_error("Invalid page.");
 
   page_renderer pr;
@@ -461,10 +466,10 @@ static poppler::document* read_raw_pdf(cpp11::raws x, std::string opw,
   image img = pr.render_page(p.get(), dpi, dpi);
   if (!img.is_valid()) throw std::runtime_error("PDF rendering failure.");
 
-  writable::raws res(img.bytes_per_row() * img.height());
+  cpp11::writable::raws res(img.bytes_per_row() * img.height());
   std::memcpy(res.data(), img.data(), res.size());
 
-  res.attr("dim") = writable::doubles(
+  res.attr("dim") = cpp11::writable::doubles(
       {static_cast<double>(img.width()), static_cast<double>(img.height())});
   return res;
 }
