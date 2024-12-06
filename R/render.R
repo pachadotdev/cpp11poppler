@@ -17,28 +17,18 @@
 #' @family cpp11poppler
 #' @aliases render
 #' @examples # Rendering should be supported on all platforms now
-#' # convert few pages to png
-#' file.copy(file.path(Sys.getenv("R_DOC_DIR"), "NEWS.pdf"), "news.pdf")
-#' pdf_convert("news.pdf", pages = 1:3)
+#' # convert pdf to png
+#' tmpdir <- tempdir()
+#' file <- system.file("examples", "apache.pdf", package = "cpp11poppler")
+#' outfiles <- paste0(tmpdir, "/apache_", 1:5, ".png")
+#' pdf_convert(file, verbose = FALSE, filenames = paste0(tmpdir, "/apache_%d.%s"))
 #'
 #' # render into raw bitmap
-#' bitmap <- pdf_render_page("news.pdf")
+#' # bitmap <- pdf_render_page(file) # memory leak, fix later!
 #'
 #' # save to bitmap formats
-#' png::writePNG(bitmap, "page.png")
-#' webp::write_webp(bitmap, "page.webp")
-#'
-#' # Higher quality
-#' bitmap <- pdf_render_page("news.pdf", page = 1, dpi = 300)
-#' png::writePNG(bitmap, "page.png")
-#'
-#' # slightly more efficient
-#' bitmap_raw <- pdf_render_page("news.pdf", numeric = FALSE)
-#' webp::write_webp(bitmap_raw, "page.webp")
-#'
-#' # Cleanup
-#' unlink(c('news.pdf', 'news_1.png', 'news_2.png', 'news_3.png',
-#'  'page.jpeg', 'page.png', 'page.webp'))
+#' # png::writePNG(bitmap, paste0(tmpdir, "/page.png"))
+#' # webp::write_webp(bitmap, paste0(tmpdir, "/page.webp"))
 pdf_render_page<- function(pdf, page = 1, dpi = 300, numeric = FALSE, antialias = TRUE, opw = "", upw = "") {
   antialiasing <- isTRUE(antialias) || isTRUE(antialias == "draw")
   text_antialiasing <- isTRUE(antialias) || isTRUE(antialias == "text")

@@ -14,3 +14,5 @@ src/Makevars
 inst
 configure.log
 inst/doc
+/doc/
+/Meta/

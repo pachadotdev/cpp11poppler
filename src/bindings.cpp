@@ -497,7 +497,7 @@ static poppler::document* read_raw_pdf(cpp11::raws x, std::string opw,
 }
 
 static void error_callback(const std::string& msg, void* context) {
-  cpp11::function err_cb = cpp11::package("pdftools")["err_cb"];
+  cpp11::function err_cb = cpp11::package("cpp11poppler")["err_cb"];
   err_cb(cpp11::writable::strings({msg.c_str()}));
 }
 

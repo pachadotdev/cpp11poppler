@@ -42,6 +42,6 @@ Suggests:
 Remotes:
     pachadotdev/cpp11tesseract
 Encoding: UTF-8
-VignetteBuilder: knitr
 Language: en-US
 Config/testthat/edition: 3
+VignetteBuilder: knitr
