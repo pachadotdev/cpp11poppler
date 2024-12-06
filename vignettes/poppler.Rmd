@@ -1,0 +1,39 @@
+---
+title: "Using the Poppler engine in R"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    fig_caption: false
+vignette: >
+  %\VignetteIndexEntry{Using the Poppler engine in R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE, message = FALSE}
+library(tibble)
+# knitr::opts_chunk$set(comment = "")
+has_chi_sim <- "chi_sim" %in% cpp11tesseract::tesseract_info()$available
+if (identical(Sys.info()[["user"]], "pacha")) stopifnot(has_chi_sim)
+if (grepl("tesseract.Rcheck", getwd())) {
+  Sys.sleep(10) # workaround for CPU time check
+}
+```
+
+## Read from PDF files
+
+If your images are stored in PDF files they first need to be converted to a
+proper image format. We can do this in R using the `pdf_convert` function and
+then extract the text from the images with the `cpp11tesseract` package. Use a
+high DPI to keep quality of the image.
+
+```{r, eval=require(cpp11tesseract)}
+library(cpp11tesseract)
+file <- system.file("examples", "ocrscan.pdf", package = "cpp11tesseract")
+pngfile <- pdf_convert(file, dpi = 600)
+text <- ocr(pngfile)
+cat(text)
+```

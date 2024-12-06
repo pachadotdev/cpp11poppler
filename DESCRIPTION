@@ -39,6 +39,8 @@ Suggests:
     testthat (>= 3.0.0),
     knitr,
     rmarkdown
+Remotes:
+    pachadotdev/cpp11tesseract
 Encoding: UTF-8
 VignetteBuilder: knitr
 Language: en-US
