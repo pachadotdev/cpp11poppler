@@ -71,11 +71,11 @@ outfiles <- paste0(tmpdir, "/apache_", 1:5, ".png")
 pdf_convert(file, verbose = FALSE, filenames = paste0(tmpdir, "/apache_\%d.\%s"))
 
 # render into raw bitmap
-# bitmap <- pdf_render_page(file)
+bitmap <- pdf_render_page(file)
 
 # save to bitmap formats
-# png::writePNG(bitmap, paste0(tmpdir, "/page.png"))
-# webp::write_webp(bitmap, paste0(tmpdir, "/page.webp"))
+png::writePNG(bitmap, paste0(tmpdir, "/page.png"))
+webp::write_webp(bitmap, paste0(tmpdir, "/page.webp"))
 }
 \seealso{
 Other cpp11poppler: 

@@ -25,3 +25,4 @@ vignettes/.*\.png$
 ^dev$
 ^lib$
 ^\.covrignore$
+^Makefile$

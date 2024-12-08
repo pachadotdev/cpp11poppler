@@ -444,34 +444,88 @@ static poppler::document* read_raw_pdf(cpp11::raws x, std::string opw,
   }
 }
 
-[[cpp11::register]] cpp11::raws poppler_render_page(
+[[cpp11::register]] cpp11::list poppler_render_page_(
     cpp11::raws x, int pagenum, double dpi, std::string opw, std::string upw,
     bool antialiasing = true, bool text_antialiasing = true) {
-  if (!page_renderer::can_render())
-    throw std::runtime_error("Rendering not supported on this platform!");
+  // Validate input is a raw vector
+  if (TYPEOF(x) != RAWSXP) {
+    throw std::runtime_error("Input must be a raw vector.");
+  }
 
-  cpp11::message("Raw vector size: %d", Rf_length(x));
-  cpp11::message("Raw vector type: %s", typeid(x).name());
+  const unsigned char* pdf_data = RAW(x);
+  size_t pdf_size = Rf_length(x);
 
-  std::unique_ptr<poppler::document> doc(read_raw_pdf(x, opw, upw));
-  if (!doc) throw std::runtime_error("Failed to load PDF document.");
+  if (pdf_size == 0) {
+    throw std::runtime_error("Input raw vector is empty.");
+  }
 
+  // Load PDF document
+  std::unique_ptr<poppler::document> doc(poppler::document::load_from_raw_data(
+      reinterpret_cast<const char*>(pdf_data), pdf_size, opw, upw));
+  if (!doc) {
+    throw std::runtime_error(
+        "Failed to load PDF document. Ensure input is valid.");
+  }
+
+  // Create page
   std::unique_ptr<poppler::page> p(doc->create_page(pagenum - 1));
-  if (!p) throw std::runtime_error("Invalid page.");
+  if (!p) {
+    throw std::runtime_error("Invalid page number.");
+  }
 
+  // Configure renderer
   page_renderer pr;
   pr.set_render_hint(page_renderer::antialiasing, antialiasing);
   pr.set_render_hint(page_renderer::text_antialiasing, text_antialiasing);
 
+  // Render page
   image img = pr.render_page(p.get(), dpi, dpi);
-  if (!img.is_valid()) throw std::runtime_error("PDF rendering failure.");
+  if (!img.is_valid()) {
+    throw std::runtime_error("PDF rendering failure.");
+  }
 
-  cpp11::writable::raws res(img.bytes_per_row() * img.height());
-  std::memcpy(res.data(), img.data(), res.size());
+  // Determine channels
+  size_t channels = 0;
+  switch (img.format()) {
+    case image::format_mono:
+      channels = 1;
+      break;
+    case image::format_rgb24:
+      channels = 3;
+      break;
+    case image::format_argb32:
+      channels = 4;
+      break;
+    default:
+      throw std::runtime_error("Invalid image format.");
+  }
 
-  res.attr("dim") = cpp11::writable::doubles(
-      {static_cast<double>(img.width()), static_cast<double>(img.height())});
-  return res;
+  // Prepare list of channel matrices
+  size_t width = img.width();
+  size_t height = img.height();
+  cpp11::writable::list result(channels);
+  cpp11::writable::integers result_names(channels);
+  for (size_t i = 0; i < channels; i++) {
+    result_names[i] = i + 1;
+  }
+  result.attr("names") = result_names;
+  
+  const unsigned char* img_data = reinterpret_cast<const unsigned char*>(img.data());
+  size_t ch, col, row;
+  for (ch = 0; ch < channels; ++ch) {
+    cpp11::writable::doubles_matrix<> channel(width, height);
+
+    for (col = 0; col < height; ++col) {
+      for (row = 0; row < width; ++row) {
+        channel(row, col) = static_cast<double>(
+          img_data[col * img.bytes_per_row() + row * channels + ch]) / 255.0;
+      }
+    }
+
+    result[ch] = channel;
+  }
+
+  return result;
 }
 
 [[cpp11::register]] std::vector<std::string> poppler_convert(

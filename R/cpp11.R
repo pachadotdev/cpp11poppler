@@ -36,8 +36,8 @@ poppler_pdf_toc <- function(x, opw, upw) {
   .Call(`_cpp11poppler_poppler_pdf_toc`, x, opw, upw)
 }
 
-poppler_render_page <- function(x, pagenum, dpi, opw, upw, antialiasing, text_antialiasing) {
-  .Call(`_cpp11poppler_poppler_render_page`, x, pagenum, dpi, opw, upw, antialiasing, text_antialiasing)
+poppler_render_page_ <- function(x, pagenum, dpi, opw, upw, antialiasing, text_antialiasing) {
+  .Call(`_cpp11poppler_poppler_render_page_`, x, pagenum, dpi, opw, upw, antialiasing, text_antialiasing)
 }
 
 poppler_convert <- function(x, format, pages, names, dpi, opw, upw, antialiasing, text_antialiasing, verbose) {

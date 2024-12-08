@@ -24,11 +24,11 @@
 #' pdf_convert(file, verbose = FALSE, filenames = paste0(tmpdir, "/apache_%d.%s"))
 #'
 #' # render into raw bitmap
-#' # bitmap <- pdf_render_page(file) # memory leak, fix later!
+#' bitmap <- pdf_render_page(file)
 #'
 #' # save to bitmap formats
-#' # png::writePNG(bitmap, paste0(tmpdir, "/page.png"))
-#' # webp::write_webp(bitmap, paste0(tmpdir, "/page.webp"))
+#' png::writePNG(bitmap, paste0(tmpdir, "/page.png"))
+#' webp::write_webp(bitmap, paste0(tmpdir, "/page.webp"))
 pdf_render_page<- function(pdf, page = 1, dpi = 300, numeric = FALSE, antialias = TRUE, opw = "", upw = "") {
   antialiasing <- isTRUE(antialias) || isTRUE(antialias == "draw")
   text_antialiasing <- isTRUE(antialias) || isTRUE(antialias == "text")
