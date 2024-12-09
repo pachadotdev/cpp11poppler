@@ -17,12 +17,12 @@ all:
 	clean winlibs
 
 clean:
-	cmd /C del /Q $(OBJECTS) $(SHLIB)
+	powershell -Command "Remove-Item -Force -Recurse $(OBJECTS), $(SHLIB)"
 
 winlibs:
 	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" "../tools/winlibs.R"
-	cmd /C rmdir /S /Q ../inst/share && mkdir ../inst/share
-	xcopy /E /I $(RWINLIB)/$(POPPLERDATA) ../inst/share/poppler
+	powershell -Command "Remove-Item -Force -Recurse ../inst/share; New-Item -ItemType Directory -Path ../inst/share"
+	powershell -Command "Copy-Item -Recurse -Force $(RWINLIB)/$(POPPLERDATA) ../inst/share/poppler"
 
 .PHONY:
 	all winlibs clean
