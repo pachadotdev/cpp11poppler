@@ -24,7 +24,7 @@ if (!file.exists("../windows/harfbuzz/include/harfbuzz/hb.h")) {
     "https://github.com/pachadotdev/cpp11bundles/releases/download/harfbuzz-8.2.1/harfbuzz-8.2.1-clang-aarch64.tar.xz"
   } else if (grepl("clang", Sys.getenv("R_COMPILED_BY"))) {
     "https://github.com/pachadotdev/cpp11bundles/releases/download/harfbuzz-8.2.1/harfbuzz-8.2.1-clang-x86_64.tar.xz"
-  } else if (getRversion() >= "4.3") {
+  } else {
     "https://github.com/pachadotdev/cpp11bundles/releases/download/harfbuzz-8.2.1/harfbuzz-8.2.1-ucrt-x86_64.tar.xz"
   }
   download.file(url, basename(url), quiet = TRUE)
