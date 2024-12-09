@@ -1,5 +1,5 @@
 test_that("text in english", {
-  file <- system.file("examples", "latkes.pdf", package = "cpp11poppler")
+  file <- "latkes.pdf"
   toc <- pdf_toc(file)
   expect_equal(toc$children[[1]]$title, "Ingredients")
 
@@ -22,7 +22,7 @@ test_that("text in japanese", {
   skip_on_cran()
   skip_if(poppler_config()$version < "0.41")
 
-  file <- system.file("examples", "sashimi.pdf", package = "cpp11poppler")
+  file <- "sashimi.pdf"
 
   text <- pdf_text(file)
   sashimi <- "\u523A\u8EAB"
@@ -39,7 +39,7 @@ test_that("text in chinese", {
   skip_on_cran()
   skip_if(poppler_config()$version < "0.41")
 
-  file <- system.file("examples", "pekingduck.pdf", package = "cpp11poppler")
+  file <- "pekingduck.pdf"
 
   text <- pdf_text(file)
   pekingduck <- "\u5317\u4EAC\u70E4\u9E2D"

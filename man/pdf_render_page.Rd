@@ -67,15 +67,12 @@ raw bitmap array for further processing in R.
 # convert pdf to png
 tmpdir <- tempdir()
 file <- system.file("examples", "apache.pdf", package = "cpp11poppler")
-outfiles <- paste0(tmpdir, "/apache_", 1:5, ".png")
-pdf_convert(file, verbose = FALSE, filenames = paste0(tmpdir, "/apache_\%d.\%s"))
-
-# render into raw bitmap
-bitmap <- pdf_render_page(file)
-
-# save to bitmap formats
-png::writePNG(bitmap, paste0(tmpdir, "/page.png"))
-webp::write_webp(bitmap, paste0(tmpdir, "/page.webp"))
+outfiles <- paste0(tmpdir, "/apache_", 1:2, ".png")
+pdf_convert(file, pages = 1:2, verbose = FALSE,
+ filenames = paste0(tmpdir, "/apache_\%d.\%s"))
+page1 <- pdf_render_page(file, 1)
+png::writePNG(page1, paste0(tmpdir, "/page1.png"))
+webp::write_webp(page1, paste0(tmpdir, "/page1.webp"))
 }
 \seealso{
 Other cpp11poppler: 

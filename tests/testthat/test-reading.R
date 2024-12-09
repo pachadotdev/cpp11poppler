@@ -1,6 +1,6 @@
 test_that("reading password protected pdf", {
   # Read encrypted file with password
-  file <- system.file("examples", "password.pdf", package = "cpp11poppler")
+  file <- "password.pdf"
 
   if(poppler_config()$version >= "0.30"){
     expect_message(expect_true(pdf_info(file)$locked))
