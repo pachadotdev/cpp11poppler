@@ -511,15 +511,25 @@ static poppler::document* read_raw_pdf(cpp11::raws x, std::string opw,
   result.attr("names") = result_names;
   
   const unsigned char* img_data = reinterpret_cast<const unsigned char*>(img.data());
-  size_t ch, col, row;
+  size_t ch, col, row, total_pixels, i;
   for (ch = 0; ch < channels; ++ch) {
     cpp11::writable::doubles_matrix<> channel(width, height);
 
-    for (col = 0; col < height; ++col) {
-      for (row = 0; row < width; ++row) {
-        channel(row, col) = static_cast<double>(
-          img_data[col * img.bytes_per_row() + row * channels + ch]) / 255.0;
-      }
+    // for (col = 0; col < height; ++col) {
+    //   for (row = 0; row < width; ++row) {
+    //     channel(row, col) = static_cast<double>(
+    //       img_data[col * img.bytes_per_row() + row * channels + ch]) / 255.0;
+    //   }
+    // }
+
+    total_pixels = width * height;
+    for (i = 0; i < total_pixels; ++i) {
+      row = i % width;
+      col = i / width;
+      channel(row, col) =
+          static_cast<double>(
+              img_data[col * img.bytes_per_row() + row * channels + ch]) /
+          255.0;
     }
 
     result[ch] = channel;
