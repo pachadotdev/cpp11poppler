@@ -1,25 +1,29 @@
 POPPLERDATA=share/poppler
+
 RWINLIB=../windows/poppler
+
 PKG_CXXFLAGS=-Dpoppler_cpp_EXPORTS -DBUNDLE_POPPLER_DATA
+
 PKG_CPPFLAGS=-I$(RWINLIB)/include/poppler/cpp \
 	-I$(RWINLIB)/include/poppler \
 	-DSTRICT_R_HEADERS -DR_NO_REMAP
 
-PKG_LIBS= \
-	-L$(RWINLIB)/lib${subst gcc,,${COMPILED_BY}}${R_ARCH} \
+PKG_LIBS=-L$(RWINLIB)/lib${subst gcc,,${COMPILED_BY}}${R_ARCH} \
 	-L$(RWINLIB)/lib \
 	-lpoppler-cpp -lpoppler -llcms2 -ljpeg -lpng16 -ltiff -lopenjp2 \
 	-lfreetype -lfreetype -lbz2 -liconv -lz
 
-all: clean winlibs
+all:
+	clean winlibs
 
 clean:
-	del /Q $(OBJECTS) $(SHLIB)
+	cmd /C del /Q $(OBJECTS) $(SHLIB)
 
 winlibs:
 	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" "../tools/winlibs.R"
-	rmdir /S /Q ../inst/share && mkdir ../inst/share
+	cmd /C rmdir /S /Q ../inst/share && mkdir ../inst/share
 	xcopy /E /I $(RWINLIB)/$(POPPLERDATA) ../inst/share/poppler
 
-.PHONY: all winlibs clean
+.PHONY:
+	all winlibs clean
 
