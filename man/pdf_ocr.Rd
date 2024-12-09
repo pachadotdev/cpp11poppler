@@ -47,7 +47,7 @@ Perform OCR text extraction. This requires you have the \code{tesseract} package
 \seealso{
 Other cpp11poppler: 
 \code{\link{cpp11poppler}},
-\code{\link{qpdf}},
+\code{\link{cpp11qpdf}},
 \code{\link{rendering}}
 }
 \concept{cpp11poppler}

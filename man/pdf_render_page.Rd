@@ -77,7 +77,7 @@ webp::write_webp(page1, paste0(tmpdir, "/page1.webp"))
 \seealso{
 Other cpp11poppler: 
 \code{\link{cpp11poppler}},
-\code{\link{pdf_ocr_text}()},
-\code{\link{qpdf}}
+\code{\link{cpp11qpdf}},
+\code{\link{pdf_ocr_text}()}
 }
 \concept{cpp11poppler}

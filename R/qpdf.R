@@ -1,7 +1,7 @@
-#' @importFrom qpdf pdf_combine
-#' @rdname qpdf
-#' @name qpdf
-#' @title qpdf utilities
+#' @importFrom cpp11qpdf pdf_combine
+#' @rdname cpp11qpdf
+#' @name cpp11qpdf
+#' @title cpp11qpdf utilities
 #' @family cpp11poppler
 #' @param input A character vector of input PDF file paths.
 #' @param output The output PDF file path.
@@ -9,24 +9,24 @@
 #' @param linearize Logical, whether to linearize the output PDF.
 #' @param pages A character vector specifying the pages to include.
 #' @export
-qpdf::pdf_combine
+cpp11qpdf::pdf_combine
 
-#' @importFrom qpdf pdf_compress
-#' @rdname qpdf
+#' @importFrom cpp11qpdf pdf_compress
+#' @rdname cpp11qpdf
 #' @export
-qpdf::pdf_compress
+cpp11qpdf::pdf_compress
 
-#' @importFrom qpdf pdf_length
-#' @rdname qpdf
+#' @importFrom cpp11qpdf pdf_length
+#' @rdname cpp11qpdf
 #' @export
-qpdf::pdf_length
+cpp11qpdf::pdf_length
 
-#' @importFrom qpdf pdf_split
-#' @rdname qpdf
+#' @importFrom cpp11qpdf pdf_split
+#' @rdname cpp11qpdf
 #' @export
-qpdf::pdf_split
+cpp11qpdf::pdf_split
 
-#' @importFrom qpdf pdf_subset
-#' @rdname qpdf
+#' @importFrom cpp11qpdf pdf_subset
+#' @rdname cpp11qpdf
 #' @export
-qpdf::pdf_subset
+cpp11qpdf::pdf_subset

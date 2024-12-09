@@ -27,7 +27,7 @@ SystemRequirements:
         brew: poppler
     )
 Imports: 
-    qpdf
+    cpp11qpdf
 LinkingTo: 
     cpp11
 RoxygenNote: 7.3.2
@@ -40,7 +40,8 @@ Suggests:
     knitr,
     rmarkdown
 Remotes:
-    pachadotdev/cpp11tesseract
+    pachadotdev/cpp11tesseract,
+    pachadotdev/cpp11qpdf
 Encoding: UTF-8
 Language: en-US
 Config/testthat/edition: 3

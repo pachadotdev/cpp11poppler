@@ -67,8 +67,8 @@ files <- pdf_attachments(pdf_file)
 }
 \seealso{
 Other cpp11poppler: 
+\code{\link{cpp11qpdf}},
 \code{\link{pdf_ocr_text}()},
-\code{\link{qpdf}},
 \code{\link{rendering}}
 }
 \concept{cpp11poppler}

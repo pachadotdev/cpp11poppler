@@ -3,12 +3,10 @@
 
 # cpp11poppler
 
+[![R-CMD-check](https://github.com/pachadotdev/cpp11poppler/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pachadotdev/cpp11poppler/actions/workflows/R-CMD-check.yaml)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/cpp11poppler)](http://cran.r-project.org/package=cpp11poppler)
-[![CRAN RStudio mirror
-downloads](http://cranlogs.r-pkg.org/badges/cpp11poppler)](http://cran.r-project.org/web/packages/cpp11poppler/index.html)
 
 ## Introduction
 
