@@ -19,6 +19,17 @@ pdf_split(input, output = NULL, password = "")
 
 pdf_subset(input, pages = 1, output = NULL, password = "")
 }
+\arguments{
+\item{input}{A character vector of input PDF file paths.}
+
+\item{output}{The output PDF file path.}
+
+\item{password}{An optional password for encrypted PDFs.}
+
+\item{linearize}{Logical, whether to linearize the output PDF.}
+
+\item{pages}{A character vector specifying the pages to include.}
+}
 \description{
 qpdf utilities
 }

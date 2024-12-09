@@ -14,12 +14,12 @@ PKG_LIBS= \
 all: clean winlibs
 
 clean:
-	rm -f $(OBJECTS) $(SHLIB)
+	del /Q $(OBJECTS) $(SHLIB)
 
 winlibs:
 	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" "../tools/winlibs.R"
-	rm -Rf ../inst/share && mkdir -p ../inst/share
-	cp -Rf $(RWINLIB)/$(POPPLERDATA) ../inst/share/poppler
+	rmdir /S /Q ../inst/share && mkdir ../inst/share
+	xcopy /E /I $(RWINLIB)/$(POPPLERDATA) ../inst/share/poppler
 
 .PHONY: all winlibs clean
 
