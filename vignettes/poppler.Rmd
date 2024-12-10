@@ -1,31 +1,66 @@
 ---
-title: "Using the Poppler engine in R"
+title: "Using cpp11poppler"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using the Poppler engine in R}
+  %\VignetteIndexEntry{Using cpp11poppler}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+# Extracting Text
+
+You can extract text from a PDF file using the `pdf_text` function. This function returns a character vector of equal length to the number of pages in the PDF file.
+
+```{r text}
+library(cpp11poppler)
+
+file <- system.file("examples", "recipes.pdf", package = "cpp11poppler")
+text <- pdf_text(file)
+cat(text[1])
 ```
 
-## Read from PDF files
+# Extracting Metadata
 
-If your images are stored in PDF files they first need to be converted to a
-proper image format. We can do this in R using the `pdf_convert` function and
-then extract the text from the images with the `cpp11tesseract` package. Use a
-high DPI to keep quality of the image.
+You can extract metadata from a PDF file using the `pdf_info` function. This function returns a list with metadata information.
 
-```{r, eval=require(cpp11tesseract)}
-library(cpp11poppler)
-library(cpp11tesseract)
-file <- system.file("examples", "ocrscan.pdf", package = "cpp11tesseract")
-pngfile <- pdf_convert(file, dpi = 600)
-text <- ocr(pngfile)
-cat(text)
+```{r metadata}
+pdf_info(file)
+```
+
+## Extracting Fonts
+
+You can extract font information from a PDF file using the `pdf_fonts` function. This function returns a data frame with font information.
+
+```{r fonts}
+pdf_fonts(file)
+```
+
+# Extracting Attachments
+
+You can extract attachments from a PDF file using the `pdf_attachments` function. This function returns a list with attachment information.
+
+```{r attachments}
+pdf_attachments(file)
+```
+
+# Rendering Pages
+
+You can render a PDF page to a bitmap array using the `pdf_render_page` function. This function returns a bitmap array that can be further processed in R.
+
+```{r png}
+page1 <- pdf_render_page(file, page = 1, dpi = 300)
+png::writePNG(page1, "page1.png")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("page1.png")
+```
+
+## Converting Pages to Images
+
+You can convert PDF pages to images using the `pdf_convert` function. This function saves the rendered pages as image files.
+
+```r
+pdf_convert(file, format = "png", pages = 1:2, dpi = 300, verbose = FALSE)
 ```

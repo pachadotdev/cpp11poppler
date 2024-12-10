@@ -19,7 +19,7 @@
 #' @examples # Rendering should be supported on all platforms now
 #' # convert pdf to png
 #' tmpdir <- tempdir()
-#' file <- file.path(Sys.getenv("R_DOC_DIR"), "NEWS.pdf")
+#' file <- system.file("examples", "recipes.pdf", package = "cpp11poppler")
 #' outfiles <- paste0(tmpdir, "/apache_", 1:2, ".png")
 #' pdf_convert(file, pages = 1:2, verbose = FALSE,
 #'  filenames = paste0(tmpdir, "/apache_%d.%s"))

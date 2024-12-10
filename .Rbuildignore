@@ -26,3 +26,11 @@ vignettes/.*\.png$
 ^lib$
 ^\.covrignore$
 ^Makefile$
+^tests/testthat/latkes\.qmd$
+^tests/testthat/nopassword\.qmd$
+^tests/testthat/nopassword\.pdf$
+^tests/testthat/pekingduck\.qmd$
+^tests/testthat/sashimi\.qmd$
+^inst/examples/recipes\.qmd$
+^recipes_1\.png$
+^recipes_2\.png$

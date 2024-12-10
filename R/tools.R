@@ -29,11 +29,11 @@
 #' @aliases cpp11poppler
 #' @family cpp11poppler
 #' @examples # Just a random pdf file
-#' pdf_file <- file.path(R.home("doc"), "NEWS.pdf")
-#' info <- pdf_info(pdf_file)
-#' text <- pdf_text(pdf_file)
-#' fonts <- pdf_fonts(pdf_file)
-#' files <- pdf_attachments(pdf_file)
+#' file <- system.file("examples", "recipes.pdf", package = "cpp11poppler")
+#' info <- pdf_info(file)
+#' text <- pdf_text(file)
+#' fonts <- pdf_fonts(file)
+#' files <- pdf_attachments(file)
 pdf_info <- function(pdf, opw = "", upw = "") {
   poppler_pdf_info(loadfile(pdf), opw, upw)
 }
