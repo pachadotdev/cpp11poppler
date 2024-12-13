@@ -11,7 +11,9 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repo
 ## About
 
 The `cpp11poppler` package provides a set of functions for extracting
-text, fonts, attachments and metadata from a PDF file.
+text, fonts, attachments and metadata from a PDF file. It is a fork of
+`pdftools` that uses `cpp11` for those that require it for licensing or
+security purposes.
 
 ## Installation
 
@@ -30,6 +32,8 @@ library(cpp11poppler)
 #> Using poppler version 22.02.0
 tmpdir <- tempdir()
 file <- system.file("examples", "recipes.pdf", package = "cpp11poppler")
-pdf_convert(file, pages = 1:2, verbose = FALSE)
-#> [1] "recipes_1.png" "recipes_2.png"
+pdf_convert(file, pages = 1L, filenames = file.path(tmpdir, "recipes%02d.%s"))
+#> Converting page 1 to /tmp/Rtmp7OsuJM/recipes01.png...
+#> done.
+#> [1] "/tmp/Rtmp7OsuJM/recipes01.png"
 ```

@@ -2,14 +2,17 @@ Package: cpp11poppler
 Type: Package
 Title: Text Extraction, Rendering and Converting of PDF Documents
 Version: 22.02.0
-Authors@R: c(person("Jeroen", "Ooms",
-                    role = c("aut"),
-                    email = "jeroen@berkeley.edu",
-                    comment = c(ORCID = "0000-0002-4035-0289")),
-             person("Mauricio", "Vargas Sepulveda",
+Authors@R: c(person("Mauricio", "Vargas Sepulveda",
                     role = c("aut", "cre"), 
                     email = "m.sepulveda@mail.utoronto.ca", 
                     comment = c(ORCID = "0000-0003-1017-7574")),
+             person("Jeroen", "Ooms",
+                    role = c("aut"),
+                    email = "jeroen@berkeley.edu",
+                    comment = c("Author of pdftools R package",
+                                ORCID = "0000-0002-4035-0289")),
+             person("Kristian Hogsberg", role = "cph",
+                    comment = "Author of poppler"),
              person("Munk School of Global Affairs and Public Policy",
                     role = "fnd")
             )
