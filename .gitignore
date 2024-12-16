@@ -8,11 +8,7 @@
 *.jpeg
 .Rproj.user
 .Rhistory
-inst
 windows
 src/Makevars
-inst
 configure.log
-inst/doc
-/doc/
-/Meta/
+inst/share
