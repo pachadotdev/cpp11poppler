@@ -23,11 +23,12 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Jeroen Ooms \email{jeroen@berkeley.edu} (\href{https://orcid.org/0000-0002-4035-0289}{ORCID})
+  \item Jeroen Ooms \email{jeroen@berkeley.edu} (\href{https://orcid.org/0000-0002-4035-0289}{ORCID}) (Author of pdftools R package)
 }
 
 Other contributors:
 \itemize{
+  \item Kristian Hogsberg (Author of poppler) [copyright holder]
   \item Munk School of Global Affairs and Public Policy [funder]
 }
 

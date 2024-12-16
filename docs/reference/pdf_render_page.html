@@ -9,7 +9,7 @@ raw bitmap array for further processing in R."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">cpp11poppler</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">22.02.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,11 +17,8 @@ raw bitmap array for further processing in R."></head><body>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
-      <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/poppler.html">Using cpp11poppler</a></li>
-  </ul></li>
+      <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/cpp11poppler.html">Get started</a></li>
+<li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/pachadotdev/cpp11poppler/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -138,7 +135,7 @@ a format string which is expanded using <code>pages</code> and <code>format</cod
 <span class="r-in"><span><span class="va">outfiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">tmpdir</span>, <span class="st">"/apache_"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="st">".png"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">pdf_convert</span><span class="op">(</span><span class="va">file</span>, pages <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
 <span class="r-in"><span> filenames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">tmpdir</span>, <span class="st">"/apache_%d.%s"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpbkapH9/apache_1.png" "/tmp/RtmpbkapH9/apache_2.png"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpTybxth/apache_1.png" "/tmp/RtmpTybxth/apache_2.png"</span>
 <span class="r-in"><span><span class="va">page1</span> <span class="op">&lt;-</span> <span class="fu">pdf_render_page</span><span class="op">(</span><span class="va">file</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">png</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/png/man/writePNG.html" class="external-link">writePNG</a></span><span class="op">(</span><span class="va">page1</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">tmpdir</span>, <span class="st">"/page1.png"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">webp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/webp/man/read_webp.html" class="external-link">write_webp</a></span><span class="op">(</span><span class="va">page1</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">tmpdir</span>, <span class="st">"/page1.webp"</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -149,7 +146,7 @@ a format string which is expanded using <code>pages</code> and <code>format</cod
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Jeroen Ooms, Mauricio Vargas Sepulveda, Munk School of Global Affairs and Public Policy.</p>
+  <p>Developed by Mauricio Vargas Sepulveda, Jeroen Ooms, Munk School of Global Affairs and Public Policy.</p>
 </div>
 
 <div class="pkgdown-footer-right">

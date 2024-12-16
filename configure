@@ -69,7 +69,7 @@ else
     rm -rf conftest.cpp conftest.o
 fi
 
-# On CRAN macbuilder copy poppler-data manually (autobrew does this automatically)
+# On CRAN macbuilder copy poppler-data manually
 if [ "$PKGCONFIG_LIBS" ] && [ `uname` = "Darwin" ]; then
   popplerdata=$(pkg-config --variable=poppler_datadir poppler-data) || exit 1
   mkdir -p inst/share
