@@ -88,9 +88,7 @@ returns one data frame per page, containing one row for each textbox in the PDF.
 which might not be available on all Linux systems.
 When using <code>pdf_data</code> in R packages, condition use on
 <code>poppler_config()$has_pdf_data</code> which shows if this function can be
-used on the current system. For Ubuntu 16.04 (Xenial) and 18.04 (Bionic)
-you can use <a href="https://github.com/pachadotdev/cpp11pdftools#installation" class="external-link">the PPA</a>
-with backports of Poppler 0.74.0.</p>
+used on the current system.</p>
 <p>Poppler is pretty verbose when encountering minor errors in PDF files,
 in especially <code>pdf_text</code>. These messages are usually safe
 to ignore, use <code><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></code> to hide them altogether.</p>
