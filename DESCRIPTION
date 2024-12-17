@@ -1,7 +1,7 @@
 Package: cpp11poppler
 Type: Package
 Title: Text Extraction, Rendering and Converting of PDF Documents
-Version: 0.1.0
+Version: 3.4.2
 Authors@R: c(person("Mauricio", "Vargas Sepulveda",
                     role = c("aut", "cre"), 
                     email = "m.sepulveda@mail.utoronto.ca", 
@@ -29,22 +29,16 @@ SystemRequirements:
         rpm: poppler-cpp-devel,
         brew: poppler
     )
-Imports: 
-    cpp11qpdf
 LinkingTo: 
     cpp11
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Suggests:
-    cpp11tesseract,
     png,
     webp,
     testthat (>= 3.0.0),
     knitr,
     rmarkdown
-Remotes:
-    pachadotdev/cpp11tesseract,
-    pachadotdev/cpp11qpdf
 Encoding: UTF-8
 Language: en-US
 Config/testthat/edition: 3

@@ -9,7 +9,7 @@ raw bitmap array for further processing in R."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">cpp11poppler</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.4.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,9 +121,7 @@ a format string which is expanded using <code>pages</code> and <code>format</cod
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other cpp11poppler:
-<code><a href="cpp11poppler.html">cpp11poppler</a></code>,
-<code><a href="cpp11qpdf.html">cpp11qpdf</a></code>,
-<code><a href="pdf_ocr.html">pdf_ocr_text</a>()</code></p></div>
+<code><a href="cpp11poppler.html">cpp11poppler</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -135,7 +133,7 @@ a format string which is expanded using <code>pages</code> and <code>format</cod
 <span class="r-in"><span><span class="va">outfiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">tmpdir</span>, <span class="st">"/apache_"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="st">".png"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">pdf_convert</span><span class="op">(</span><span class="va">file</span>, pages <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
 <span class="r-in"><span> filenames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">tmpdir</span>, <span class="st">"/apache_%d.%s"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpTybxth/apache_1.png" "/tmp/RtmpTybxth/apache_2.png"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpGoxUbV/apache_1.png" "/tmp/RtmpGoxUbV/apache_2.png"</span>
 <span class="r-in"><span><span class="va">page1</span> <span class="op">&lt;-</span> <span class="fu">pdf_render_page</span><span class="op">(</span><span class="va">file</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">png</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/png/man/writePNG.html" class="external-link">writePNG</a></span><span class="op">(</span><span class="va">page1</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">tmpdir</span>, <span class="st">"/page1.png"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">webp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/webp/man/read_webp.html" class="external-link">write_webp</a></span><span class="op">(</span><span class="va">page1</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">tmpdir</span>, <span class="st">"/page1.webp"</span><span class="op">)</span><span class="op">)</span></span></span>
