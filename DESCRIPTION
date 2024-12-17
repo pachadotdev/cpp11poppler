@@ -16,10 +16,11 @@ Authors@R: c(person("Mauricio", "Vargas Sepulveda",
              person("Munk School of Global Affairs and Public Policy",
                     role = "fnd")
             )
-Description: Bindings to 'libpoppler':
-    A tool for extracting text, fonts, attachments and metadata from a PDF file.
-    Also supports high quality rendering of PDF documents into PNG, JPEG, TIFF
-    format, or into raw bitmap vectors for posterior processing.
+Description: Bindings to 'poppler':
+    'poppler' (<https://poppler.freedesktop.org/>) is a tool for extracting
+    text, fonts, attachments and metadata from a PDF file. It also supports high
+    quality rendering of PDF documents into PNG, JPEG, TIFF format, or into raw
+    bitmap vectors for posterior processing.
 License: Apache License (>= 2)
 URL: https://pacha.dev/cpp11poppler/
 BugReports: https://github.com/pachadotdev/cpp11poppler/issues
